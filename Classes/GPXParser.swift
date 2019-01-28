@@ -87,7 +87,9 @@ open class GPXParser: NSObject, XMLParserDelegate {
     
     func value(from string: String?) -> CGFloat? {
         if string != nil {
-            if let number = NumberFormatter().number(from: string!) {
+            let formatter = NumberFormatter()
+            formatter.locale = Locale(identifier: "en")
+            if let number = formatter.number(from: string!) {
                 return CGFloat(number.doubleValue)
             }
         }
